@@ -1,0 +1,30 @@
+{
+  "name": "three-pie",
+  "version": "0.0.1",
+  "description": "Normalised interface for third-party integrations",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist/",
+    "lint": "eslint src --ext .ts",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "repository": "git@github.com:QwilApp/three-pie.git",
+  "author": "Shawn Chin",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "luxon": "^3.3.0",
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.3.1",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "eslint": "^8.0.1"
+  }
+}

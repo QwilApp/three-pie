@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "dist/",
+    "module": "esnext",
+    "target": "ES5",
+    "strict": true,
+    "moduleResolution": "node",
+    "noLib": false,
+    "declaration": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "lib": [ "es2015", "DOM" ]
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
