@@ -58,6 +58,6 @@ export interface MicrosoftCalendarEvent {
   organizer: {
     emailAddress: MicrosoftEmailAddressParts;
   };
-  attendees: MicrosoftEventAttendee[];
+  attendees?: MicrosoftEventAttendee[];
   seriesMasterId?: string;
 }

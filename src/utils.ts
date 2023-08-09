@@ -37,6 +37,18 @@ export function datetimeAndTimezoneToRFC3339String(datetime: string, timezone: s
     .toString();
 }
 
+export function dateObjAndTimezoneToInputDate(date: Date, timezone: string): InputDate {
+  return {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1, // because crazy JS getMonth returns 0 for Jan
+    day: date.getDate(), // N.B. not getDate(). that gives you day of week.
+    hour: date.getHours(),
+    minute: date.getMinutes(),
+    seconds: date.getSeconds(),
+    timezone: timezone,
+  }
+}
+
 export function getLocalTimezone() {
   return Intl.DateTimeFormat().resolvedOptions().timeZone;
 }

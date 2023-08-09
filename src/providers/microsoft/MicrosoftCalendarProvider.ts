@@ -83,7 +83,7 @@ function normaliseCalendarEvent(item: MicrosoftCalendarEvent): CalendarEvent {
       name: item.organizer.emailAddress.name,
       email: item.organizer.emailAddress.address,
     },
-    attendees: item.attendees.map(a => ({
+    attendees: (item.attendees || []).map(a => ({
       name: a.emailAddress.name,
       email: a.emailAddress.address,
       responseStatus: translateAttendeeResponseStatus(a.status),

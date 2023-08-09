@@ -97,7 +97,7 @@ function normaliseCalendarEvent(item: GoogleCalendarEvent): CalendarEvent {
   const allDay = isAllDayEvent(item.start);
 
   return {
-    id: item.iCalUID,
+    id: item.id,
     subject: item.summary,
     body: item.description,
     location: item.location || "",
@@ -110,7 +110,7 @@ function normaliseCalendarEvent(item: GoogleCalendarEvent): CalendarEvent {
       name: item.organizer.displayName,
       email: item.organizer.email,
     },
-    attendees: item.attendees.map(a => ({
+    attendees: (item.attendees || []).map(a => ({
       name: a.displayName,
       email: a.email,
       responseStatus: translateAttendeeResponseStatus(a.responseStatus, a.organizer),

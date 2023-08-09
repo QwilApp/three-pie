@@ -61,7 +61,7 @@ export abstract class MicrosoftBaseProvider {
 
   protected async request({path, method, headers, qs}: PathRequestParam) {
     return this._requestPath({path, method, headers, qs})
-      .then(response => response.values);
+      .then(response => response.value);
   }
 
   protected async paginatedRequest({path, method, headers, qs}: PathRequestParam) {
@@ -77,7 +77,7 @@ export abstract class MicrosoftBaseProvider {
       }
       // see https://learn.microsoft.com/en-us/graph/paging
       nextPageLink = result['@odata.nextLink'];
-      out.push(...result.values);
+      out.push(...result.value);
       pageQuota--;
       if (nextPageLink && !pageQuota) {
         console.error('Query has too many pages. Truncating calls.')
