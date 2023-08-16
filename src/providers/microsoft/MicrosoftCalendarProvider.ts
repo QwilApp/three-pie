@@ -69,7 +69,11 @@ function normaliseCalendarListEntry(item: MicrosoftCalendarListEntry): Calendar 
 }
 
 function normaliseCalendarEvent(item: MicrosoftCalendarEvent): CalendarEvent {
+  const start = item.isAllDay ? item.start.dateTime.slice(0, 10) : datetimeAndTimezoneToRFC3339String(item.start.dateTime, item.start.timeZone);
+  const end = item.isAllDay ? item.end.dateTime.slice(0, 10) : datetimeAndTimezoneToRFC3339String(item.end.dateTime, item.start.timeZone);
   return {
+    start,
+    end,
     id: item.iCalUId,
     subject: item.subject,
     body: item.bodyPreview || item.body.content,  // take text content if exists
@@ -77,8 +81,6 @@ function normaliseCalendarEvent(item: MicrosoftCalendarEvent): CalendarEvent {
     externalLink: item.webLink,
     isAllDay: item.isAllDay,
     createdAt: item.createdDateTime,
-    start: datetimeAndTimezoneToRFC3339String(item.start.dateTime, item.start.timeZone),
-    end: datetimeAndTimezoneToRFC3339String(item.end.dateTime, item.end.timeZone),
     organizer: {
       name: item.organizer.emailAddress.name,
       email: item.organizer.emailAddress.address,
